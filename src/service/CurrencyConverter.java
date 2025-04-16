@@ -10,7 +10,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 public class CurrencyConverter {
-    private static final String API_KEY = "aeb89aa608d956647133b209";
+    private static final String API_KEY = "SUA_CHAVE_AQUI";
     private static final String BASE_URL = "https://v6.exchangerate-api.com/v6/" + API_KEY + "/pair/";
 
     private final HttpClient client = HttpClient.newHttpClient();
