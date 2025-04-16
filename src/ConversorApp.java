@@ -11,7 +11,7 @@ public class ConversorApp {
         System.out.println("Digite o nome da moeda: ");
         var moedaNome = leitura.nextLine();
 
-        String endereco = "https://v6.exchangerate-api.com/v6/aeb89aa608d956647133b209/latest/" + moedaNome;
+        String endereco = " https://v6.exchangerate-api.com/v6/aeb89aa608d956647133b209/pair/" + baseCurrency + "/" + targetCurrency;
 
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder().uri(URI.create(endereco)).build();
