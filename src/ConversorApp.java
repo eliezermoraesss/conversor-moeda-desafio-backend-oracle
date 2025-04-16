@@ -1,22 +1,77 @@
+import service.CurrencyConverter;
+
 import java.io.IOException;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 import java.util.Scanner;
 
 public class ConversorApp {
     public static void main(String[] args) throws IOException, InterruptedException {
         Scanner leitura = new Scanner(System.in);
-        System.out.println("Digite o nome da moeda: ");
-        var moedaNome = leitura.nextLine();
+        CurrencyConverter converter = new CurrencyConverter();
+        int opcao;
 
-        String endereco = " https://v6.exchangerate-api.com/v6/aeb89aa608d956647133b209/pair/" + baseCurrency + "/" + targetCurrency;
+        try {
+            while (true) {
+                System.out.println("****************************************");
+                System.out.println("Seja bem-vindo/a ao Conversor de Moeda =]");
+                System.out.println("1) Dólar => Peso argentino");
+                System.out.println("2) Peso argentino => Dólar");
+                System.out.println("3) Dólar => Real brasileiro");
+                System.out.println("4) Real brasileiro => Dólar");
+                System.out.println("5) Dólar => Peso colombiano");
+                System.out.println("6) Peso colombiano => Dólar");
+                System.out.println("7) Sair");
+                System.out.println("Escolha uma opção válida:");
+                System.out.println("****************************************");
 
-        HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder().uri(URI.create(endereco)).build();
-        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+                opcao = leitura.nextInt();
+                if (opcao == 7) {
+                    System.out.println("Saindo...");
+                    break;
+                }
 
-        System.out.println(response.body());
+                System.out.println("Digite o valor que deseja converter:");
+                double valor = leitura.nextDouble();
+
+                String base = "", target = "";
+                switch (opcao) {
+                    case 1 -> {
+                        base = "USD";
+                        target = "ARS";
+                    }
+                    case 2 -> {
+                        base = "ARS";
+                        target = "USD";
+                    }
+                    case 3 -> {
+                        base = "USD";
+                        target = "BRL";
+                    }
+                    case 4 -> {
+                        base = "BRL";
+                        target = "USD";
+                    }
+                    case 5 -> {
+                        base = "USD";
+                        target = "COP";
+                    }
+                    case 6 -> {
+                        base = "COP";
+                        target = "USD";
+                    }
+                    default -> {
+                        System.out.println("Opção inválida.");
+                        continue;
+                    }
+                }
+
+                double result = converter.convert(base, target, valor);
+                System.out.printf("Valor %.2f [%s] corresponde ao valor final de =>>> %.2f [%s]%n",
+                        valor, base, result, target);
+            }
+
+            leitura.close();
+        } catch (Exception e) {
+
+        }
     }
 }
