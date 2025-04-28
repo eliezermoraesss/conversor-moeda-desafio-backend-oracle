@@ -300,5 +300,5 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 ## 🤝 Contato
 
 Feito com 💙 por Eliezer  
-🔗 [LinkedIn](https://www.linkedin.com/)  
-📧 eliezer@email.com
+🔗 [LinkedIn](https://www.linkedin.com/in/eliezer-moraes-silva-80b68010b)  
+📧 eliezer.moraes@outlook.com
